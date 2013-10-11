@@ -1,0 +1,56 @@
+<div class="form-group" id="main-section">
+    <div class="processing">
+
+        <div ng-show="!isProcessing">
+            <div class="work-indicator await-for-a-client"></div>
+            <span class="font-thin  general-view-caption fadeInUp">Клиент приглашен</span>
+        </div>
+
+        <div ng-show="isProcessing">
+            <div class="work-indicator work-in-progress"></div>
+            <span class="font-thin  general-view-caption fadeInUp">Прием начат</span>
+        </div>
+
+        <div class="ticket">{{data.TicketProduct.Ticket.FullNumber}}</div>
+
+        <div class="info">
+
+            <div class="text">
+                <div class="pull-left" ng-class="{'m-r-lg':isTextLong(data.TicketProduct.Name)}">{{cutLongText(data.TicketProduct.Name)}}</div>
+                <div class="pull-right processing-details" ng-show="isTextLong(data.TicketProduct.Name)"
+                                                           ng-click="showDetails(data.TicketProduct)">...</div>
+            </div>
+        </div>
+
+        <div class="m-t-lg">
+
+            <div ng-show="!isProcessing">
+                <div>
+                    <button class="os-btn a-btn a-r blue m-t-lg" ng-click="startProcessing()">Начать прием</button>
+                </div>
+                <div>
+                    <button class="os-btn m-t-lg multiline clearfix" ng-click="inviteAgain($event)">
+                        <i class="icon-rotate-right icon-large block pull-left invite-again"></i> <span class="block pull-left">Пригласить<br>повторно</span>
+                    </button>
+                </div>
+                <div>
+                    <button class="os-btn a-btn a-l red m-t-lg" ng-click="cancelOperation()">Не явился</button>
+                </div>
+            </div>
+
+            <div ng-show="isProcessing">
+                <div>
+                    <button class="os-btn red m-t-lg" ng-click="completeOperation()">Закончить приём</button>
+                </div>
+                <div>
+                    <button class="os-btn a-btn a-r m-t-lg" ng-click="redirectTicket()">Переадресовать</button>
+                </div>
+                <div>
+                    <button class="os-btn m-t-lg" ng-click="holdCurrent()">Отложить приём</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,50 @@
+<div >
+    <!--scrollable-->
+    <div ng-show="!selectedService" style="width: 250px">
+        <scroll-bar>
+            <div class="buttons-list" style="width: 100%">
+                <div ng-repeat="item in displayData" class="m-b-sm">
+                    <div class="as-table">
+                        <a class="centrify"
+                           href=""
+                           ng-click="select($event, item)">
+                            <div class="text pull-left">{{item.Name}}</div>
+                            <div class="details pull-left" ng-click="showDetails($event, item);" ng-show="item.FullName">...</div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </scroll-bar>
+        <div class="push-bottom">
+            <div class="to-middle">
+                <a href="" ng-click="back()" class="os-btn m-t-lg l-btn a-btn red a-l" ng-show="currentParent">Назад</a>
+                <a href="" ng-click="cancel()" class="os-btn m-t-lg l-btn m-l-sm2">Отмена</a>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="selectedService">
+
+        <div style="width:175px; position: relative">
+            <div class="font-bold" style="margin-bottom: 15px;">Талон {{selectedService.Product.Prefix}}{{selectedService.Product.Id}}</div>
+            <div style="position: absolute; left: -30px; font-weight: bold">&rarr;</div>
+            <div style="height: 90px;" ng-show="selectedService.FullName">
+                {{selectedService.FullName}}
+            </div>
+            <div style="height: 90px;" ng-hide="selectedService.FullName">
+                {{selectedService.Name}}
+            </div>
+        </div>
+
+
+        <div class="push-bottom multiple-buttons">
+            <div class="to-middle">
+                <a href="" ng-click="back()" class="os-btn a-btn m-t-lg l-btn a-l red">Назад</a>
+                <a href="" ng-click="applyRedirect()" class="os-btn a-btn m-t-lg l-btn a-r blue multiline m-l-sm2">Выполнить<br>переадресацию</a>
+            </div>
+        </div>
+    </div>
+
+</div>

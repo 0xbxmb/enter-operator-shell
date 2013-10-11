@@ -1,0 +1,21 @@
+<div class="main-column m-t-lg2 main-page">
+
+    <div class="animated fadeInUp text-center">
+        <span class="text-center number"> {{activeTicketProductCount || 0}}</span>
+        <span>в общей очереди</span>
+    </div>
+
+    <button class="os-btn a-btn a-r blue m-t-sm"
+            ng-disabled="!activeTicketProductCount"
+            ng-click="inviteNew()">Пригласить</button>
+
+
+    <div class="animated fadeInUp text-center m-t-lg">
+        <span class="text-center number" > {{personalQueueCount || 0}} </span>
+        <span>в персональной очереди</span>
+    </div>
+
+    <button class="os-btn a-btn a-r blue m-t-sm"
+            ng-disabled="!personalQueueCount"
+            ng-click="getTicketFromPersonalQueue()">Пригласить</button>
+</div>

@@ -1,0 +1,13 @@
+<div class="form-group ">
+    <span class="font-thin general-view-caption  fadeInUp">
+        <span>
+              <div ng-show="!parentCategory" class="text-center">Переадресация</div>
+<!--              <div ng-show="parentCategory">{{parentCategory.Name}}</div>-->
+        </span>
+    </span>
+</div>
+<!--parent-category="parentCategory"-->
+
+<os-redirect-menu items="menu"
+                  apply-redirect-method="apply(item)"
+                  cancel-method="cancel()"></os-redirect-menu>

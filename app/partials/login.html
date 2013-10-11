@@ -1,0 +1,37 @@
+    <div class="form-group text-center">
+        <span class="font-thin  general-view-caption fadeInUp ">Вход в систему</span>
+    </div>
+
+    <form name="loginForm" novalidate="true" id="login-form" class="form-horizontal">
+        <div class="form-group">
+            <span class="col-sm-6 col-md-6 control-label">Имя пользователя</span>
+
+            <div class="col-sm-6 col-md-6">
+                <input type="text" required class="bg-focus form-control input-sm m-t-sm"
+                       ng-model="login"  ng-disabled="inRequest" />
+            </div>
+        </div>
+        <div class="form-group">
+            <span class="col-sm-6 col-md-6 control-label">Пароль</span>
+
+            <div class="col-sm-6 col-md-6">
+                <input type="password" required class="form-control input-sm m-t-sm"
+                       ng-model="password" ng-disabled="inRequest" />
+            </div>
+        </div>
+
+        <div class="text-center m-b text-white m-t-lg" ng-show="inRequest">
+            <div class="wait-indicator-white m-0-auto"></div>
+        </div>
+        <div class="text-center text-danger animated bounceIn" ng-hide="!errorMessage">{{errorMessage}}</div>
+
+    </form>
+
+    <div class="push-bottom">
+        <div class="to-middle">
+            <!--settingsForm.$invalid-->
+            <button  class="os-btn a-btn a-r green m-t-sm l-btn" ng-click="loginButtonClick()"  ng-disabled="!login || !password || inRequest">
+                Вход
+            </button>
+        </div>
+    </div>

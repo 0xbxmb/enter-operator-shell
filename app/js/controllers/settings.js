@@ -24,7 +24,6 @@ operatorShell.controller('SettingsCtrl', function ( $rootScope, $scope, $log, $l
     });
     $rootScope.$on('wampDisconnected', function () {
         notifier.connection.isConnected = true;
-        alert("!");
         isConnected = false;
     });
 

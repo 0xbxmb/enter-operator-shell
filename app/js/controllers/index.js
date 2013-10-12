@@ -19,17 +19,14 @@ operatorShell.controller('IndexCtrl', function ($rootScope, $scope, $location,  
         notifier.connection.isConnected = true;
     });
 
-    /*
     $scope.$on('$routeChangeStart', function (event, next, current) {
-
-        if (next.path === "/settings") {
-            debugger;
+        if (next.$$route.controller === "SettingsCtrl") {
+            return;
         }
-
         if (!authentication.isLoggedIn()) {
             $location.path("/login");
         }
-    });*/
+    });
 
     ticket.trackWorkPlaceClient(function (data) {
 
@@ -49,6 +46,10 @@ operatorShell.controller('IndexCtrl', function ($rootScope, $scope, $location,  
             if (data.TicketProduct !== undefined) {
                 $rootScope.ticketProduct = data.TicketProduct;
             }
+        }
+
+        if ($location.path() === "/settings") {
+            return;
         }
 
         if (data.User) {
@@ -76,9 +77,6 @@ operatorShell.controller('IndexCtrl', function ($rootScope, $scope, $location,  
     menu.trackMenu(function (data) {
         $scope.menu = data;
     });
-/*    $scope.$on('$routeChangeStart', function () {
-        ticket.notTrackWorkPlaceClient();
-    });*/
 
     $scope.logout = function () {
         $location.path("/logout");

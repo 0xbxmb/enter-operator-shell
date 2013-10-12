@@ -14,6 +14,7 @@ operatorShell.directive("osNotifier", function (notifier) {
             $scope.details = notifier.details;
             $scope.errors = notifier.errors;
             $scope.connection = notifier.connection;
+
         };
 
     return {

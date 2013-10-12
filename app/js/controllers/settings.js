@@ -2,16 +2,36 @@
  * Created by i.sungurov on 04.10.13.
  */
 
-operatorShell.controller('SettingsCtrl', function ($scope, $log, $location, settings) {
+operatorShell.controller('SettingsCtrl', function ( $rootScope, $scope, $log, $location, settings, notifier) {
 
     'use strict';
 
     $scope.isNotLogged = true;
     $scope.loginErrorMessage = null;
 
+    var isConnected = notifier.connection.isConnected;
+    notifier.connection.isConnected = true;
+
+    /*На случай, если во время того, как мы находимся в настройках произошло отключение,
+     а нам не нужно восстановить состояние по щелчку на кнопке отмена.*/
+    $rootScope.$on('wampReconnected', function () {
+        notifier.connection.isConnected = true;
+        isConnected = true;
+    });
+    $rootScope.$on('wampConnected', function () {
+        notifier.connection.isConnected = true;
+        isConnected = true;
+    });
+    $rootScope.$on('wampDisconnected', function () {
+        notifier.connection.isConnected = true;
+        alert("!");
+        isConnected = false;
+    });
+
+    /*
     $scope.login = "admin";
     $scope.password = "1";
-
+*/
     $scope.logon = function () {
 
         $scope.loginErrorMessage = null;
@@ -30,15 +50,23 @@ operatorShell.controller('SettingsCtrl', function ($scope, $log, $location, sett
     };
 
 
+
+
     $scope.apply = function () {
         settings.applyNewSettings({
             workPlaceId : $scope.workPlaceId,
             serverAddress: $scope.serverAddress
         });
-        location.reload();
+
+        $rootScope.$on('$routeChangeStart', function (data) {
+            location.reload();
+        });
+
+        $location.path("/main");
     };
 
     $scope.cancel = function () {
         $location.path("/main");
+        notifier.connection.isConnected = isConnected;
     };
 });

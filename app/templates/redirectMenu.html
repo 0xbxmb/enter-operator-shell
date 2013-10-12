@@ -1,5 +1,4 @@
-<div >
-    <!--scrollable-->
+<div>
     <div ng-show="!selectedService" style="width: 250px">
         <scroll-bar>
             <div class="buttons-list" style="width: 100%">
@@ -8,9 +7,11 @@
                         <a class="centrify"
                            href=""
                            ng-click="select($event, item)">
-                            <div class="text pull-left">{{item.Name}}</div>
-                            <div class="details pull-left" ng-click="showDetails($event, item);" ng-show="item.FullName">...</div>
-                            <div class="clearfix"></div>
+                            <div style="position: relative">
+                                <div class="text pull-left">{{item.Name}}</div>
+                                <div class="details pull-left" ng-click="showDetails($event, item);" ng-show="item.FullName">...</div>
+                                <div class="clearfix"></div>
+                            </div>
                         </a>
                     </div>
                     <div class="clearfix"></div>
@@ -37,7 +38,6 @@
                 {{selectedService.Name}}
             </div>
         </div>
-
 
         <div class="push-bottom multiple-buttons">
             <div class="to-middle">

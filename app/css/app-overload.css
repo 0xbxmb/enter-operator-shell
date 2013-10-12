@@ -289,12 +289,13 @@ span.error {
 }
 
 .buttons-list .details{
+    /*исправить*/
     position: absolute;
-    height: 100%;
+    height: 44px;
     background: #fff;
     cursor: pointer;
     right: 0px;
-    top: 0;
+    top: -7px;
     width: 20px;
     font-size: 14px;
     padding-top: 17px;
@@ -303,24 +304,45 @@ span.error {
 
 .modal{
     overflow-y: auto;
+    min-width: 320px;
+    overflow: hidden;
+}
+
+.personal-queue-caption{
+    padding-left: 45px;font-size: 18px;
+    display: block;
+    margin-bottom: 35px;
+    text-align: left;
+}
+
+.personal-queue{
+    display: table;
 }
 
 .personal-queue .item{
     color: #ffffff;
     width:225px;
-    position: relative;
-    display: block;
+    display: table-row;
     padding: 10px;
     margin-bottom: 5px;
 }
+
+.jspScrollable .personal-queue .item{
+    width: 95%
+}
+
 .personal-queue .item:hover{
-    background: #259dc5
+    background: #259dc5;
+    cursor: pointer;
 }
 .personal-queue .item .time{
-    position: absolute;
-    left: -40px;
-    top: 10px;
+    display: table-cell;
+    padding: 5px;
     font-weight: bold
+}
+.personal-queue .item .info{
+    display: table-cell;
+    padding: 5px;
 }
 
 .processing .info{
@@ -384,6 +406,13 @@ span.error {
      height: 100%;
      cursor: pointer;
      font-size: 15px;
+ }
+
+ .jspHorizontalBar{
+    display: none !important;
+    height: 0px !important;
+    width: 0px !important ;
+    color: transparent !important ;
  }
 
 .jspVerticalBar{

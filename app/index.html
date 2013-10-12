@@ -20,20 +20,21 @@
     <link rel="icon" type="image/png" href="favicon.png"/>
 </head>
 
-<!--ng-keypress="{expression}"-->
-
-<body class="blue-bg" ng-controller="IndexCtrl">
+<body class="blue-bg" ng-controller="IndexCtrl" ng-keypress="pressed($event)">
 
 <section class="hbox stretch">
     <section id="content">
         <section class="vbox">
             <header class="header bg-white ">
                 <div class="centre clearfix">
-                    <span class="pull-left" id="logo" alt="Система управления очередью «Энтер»">&nbsp;</span>
+                    <span class="pull-left" id="logo" alt="Система управления очередью «Энтер»" >&nbsp;</span>
+
                     <div class="pull-left m-l-sm black">
-                        <div class="font-bold work-place" ng-show="workplace">{{workplace.Name}}</div>
-                        <div class="user-name" ng-show="user">
-                            <a href="" ng-click="logout()">{{user.SurName}} {{user.Name[0]}}.</a>
+                        <div>
+                            <div class="font-bold work-place" ng-show="workplace">{{workplace.Name}}</div>
+                            <div class="user-name" ng-show="user">
+                                <a href="" ng-click="logout()">{{user.SurName}} {{user.Name[0]}}.</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -51,10 +52,8 @@
 
 <script src="lib/jquery/jquery-2.0.3.js"></script>
 
-
 <script src="lib/jquery.mousewheel.js"></script>
 <script src="lib/jquery.jscrollpane.min.js"></script>
-
 
 <script src="lib/underscore.js"></script>
 <script src="lib/autobahn.min.js"></script>

@@ -6,9 +6,9 @@ operatorShell.controller('LoginCtrl', function ($scope, $rootScope, $location, a
     'use strict';
 
     $scope.inRequest = false;
-
+/*
     $scope.login = "2";
-    $scope.password = "1";
+    $scope.password = "1";*/
 
     var login = function (name, paswd) {
 

@@ -13,7 +13,6 @@ operatorShell.directive("osRedirectMenu", function (notifier) {
         restrict = 'E',
         scope = {
             items: "=",
-/*            currentParent: "=parentCategory",*/
             applyRedirectMethod: "&",
             cancelMethod: "&"
         },

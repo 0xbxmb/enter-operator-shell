@@ -16,9 +16,9 @@ operatorShell.controller('PersonalQueueCtrl', function ($scope, $log,  $location
 
     $scope.getLocalDate = function (item) {
 
-        var date = new Date(item.StartTime),
-            hours = date.getUTCHours(),
-            minutes = date.getUTCMinutes();
+/*        var date = new Date(item.StartTime),
+            hours = date.getHours(),
+            minutes = date.getMinutes();
 
         if (hours < 10) {
             hours = "0" + hours;
@@ -28,7 +28,9 @@ operatorShell.controller('PersonalQueueCtrl', function ($scope, $log,  $location
             minutes = "0" + minutes;
         }
 
-        return (hours + ":" + minutes);
+        return (hours + ":" + minutes);*/
+        //TODO: пока так.
+        return item.StartTime.substr(item.StartTime.indexOf("T") + 1, 5);
     };
 
     $scope.select = function (item) {

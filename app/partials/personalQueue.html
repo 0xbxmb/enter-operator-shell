@@ -1,27 +1,28 @@
-<div class="form-group text-center">
-    <span class="font-thin  general-view-caption fadeInUp">Персональная очередь</span>
-</div>
+<div style="width: 250px">
 
+    <div class="form-group text-center">
+        <span class="font-thin  general-view-caption fadeInUp personal-queue-caption">Персональная очередь</span>
+    </div>
 
-<!--scroll-pane-->
-<scroll-bar>
-    <div class="personal-queue">
-        <a href="" class="item" ng-click="select(item)" ng-repeat="item in data.Items">
-            <div class="time">{{getLocalDate(item)}}</div>
-            <div>
-                {{item.Ticket.FullNumber}}<br/>
-                {{item.Name}}
+    <scroll-bar>
+        <div class="personal-queue">
+            <div class="item" ng-click="select(item)" ng-repeat="item in data.Items">
+                <div class="time">{{getLocalDate(item)}}</div>
+                <div class="info">
+                    {{item.Ticket.FullNumber}}<br/>
+                    {{item.Name}}
+                </div>
+                <div class="clearfix"></div>
             </div>
-        </a>
-    </div>
-</scroll-bar>
+        </div>
+    </scroll-bar>
 
 
-<div class="push-bottom">
-    <div class="to-middle">
-        <a href="" ng-click="cancel()" class="os-btn m-t-lg l-btn">Отмена</a>
+    <div class="push-bottom">
+        <div class="to-middle">
+            <a href="" ng-click="cancel()" class="os-btn m-t-lg l-btn">Отмена</a>
+        </div>
+        <div class="clearfix"></div>
     </div>
-    <div class="clearfix"></div>
+
 </div>
-
-<!--scroll-bar-->

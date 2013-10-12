@@ -19,7 +19,13 @@ operatorShell.directive('scrollBar', function ($window) {
                 autoReinitialiseDelay: 100
             });
 
-            var api = element.data('jsp');
+            var
+                api = element.data('jsp'),
+                applyActualHeight = function () {
+                    var scrollPaneHeight = $(".main-column").outerHeight(true) - ($(".general-view-caption").outerHeight(true) +$(".push-bottom").outerHeight(true)),
+                        margin = 5;
+                    element.css("height", scrollPaneHeight + margin);
+                };
 
             scope.$watch(function () {
                 return element.find('.' + attrs.scrollpane).length;
@@ -27,9 +33,10 @@ operatorShell.directive('scrollBar', function ($window) {
                 api.reinitialise();
             });
 
-            angular.element($window).bind('resize', function () {
-                debugger;
-                scope.inputSize = element.find('input')[0].clientWidth;
+            applyActualHeight();
+
+            angular.element($window).bind('resize', function (data) {
+                applyActualHeight();
                 scope.$apply();
             });
 

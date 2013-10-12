@@ -48,9 +48,6 @@ operatorShell.controller('SettingsCtrl', function ( $rootScope, $scope, $log, $l
         }
     };
 
-
-
-
     $scope.apply = function () {
         settings.applyNewSettings({
             workPlaceId : $scope.workPlaceId,

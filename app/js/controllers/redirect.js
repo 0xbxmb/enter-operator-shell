@@ -8,6 +8,7 @@ operatorShell.controller('RedirectCtrl', function ($rootScope, $scope, $log, $lo
 
     $scope.selectedService = null;
 
+
     $scope.apply = function (item) {
         ticket
             .redirectOperation({ProductId: item.ProductId,

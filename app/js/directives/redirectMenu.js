@@ -48,7 +48,6 @@ operatorShell.directive("osRedirectMenu", function (notifier) {
             return forDisplay;
         },
         link = function ($scope, iElement, iAttrs) {
-
             $scope.selectedService = null;
             $scope.currentParent = null;
 
@@ -70,16 +69,14 @@ operatorShell.directive("osRedirectMenu", function (notifier) {
                 if ($event.preventDefault) {
                     $event.preventDefault();
                 }
-
                 $event.cancelBubble = true;
                 $event.returnValue = false;
-
                 notifier.details.currentMessage  = item.FullName;
             };
 
             $scope.$watch("items", function (data) {
                 if (data && data.Items) {
-                    $scope.data = createViewData(data);
+                    $scope.data = createViewData(angular.copy(data));
                     $scope.displayData = getDataForDisplay($scope.data, null);
                 }
             });

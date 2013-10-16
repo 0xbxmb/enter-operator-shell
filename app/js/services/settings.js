@@ -12,6 +12,10 @@ operatorShell.service('settings', function (localStorageService) {
         DEFAULT_WAMP_SERVER_URL = "ws://test-zone.comintech.ru:81",
         DEFAULT_CLIENT_ID = "arm1",
 
+        wampServerLocalStorageKey = "operatorShellWampServerUrl",
+        clientIdLocalStorageKey = "operatorShellClientId",
+
+
         settings = {
             wampServerUrl: null,
             clientId: null
@@ -24,8 +28,8 @@ operatorShell.service('settings', function (localStorageService) {
 
         loadFromStorage = function () {
 
-            settings.wampServerUrl = localStorageService.get("wampServerUrl");
-            settings.clientId = localStorageService.get("clientId");
+            settings.wampServerUrl = localStorageService.get(wampServerLocalStorageKey);
+            settings.clientId = localStorageService.get(clientIdLocalStorageKey);
 
             if (!settings.wampServerUrl) {
                 settings.wampServerUrl = DEFAULT_WAMP_SERVER_URL;
@@ -41,8 +45,8 @@ operatorShell.service('settings', function (localStorageService) {
             settings.wampServerUrl = newSettings.serverAddress;
             settings.clientId = newSettings.workPlaceId;
 
-            localStorageService.set("wampServerUrl", settings.wampServerUrl);
-            localStorageService.set("clientId", settings.clientId);
+            localStorageService.set(wampServerLocalStorageKey, settings.wampServerUrl);
+            localStorageService.set(clientIdLocalStorageKey, settings.clientId);
 
         };
 

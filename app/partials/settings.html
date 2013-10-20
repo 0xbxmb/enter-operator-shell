@@ -15,7 +15,8 @@
 
             <div class="col-sm-12 col-md-12">
                 <input type="password" class="form-control input-sm m-t-sm"
-                       ng-model="password" />
+                       ng-model="password"
+                       on-enter="logon()"/>
                 <!--ng-disabled="inRequest"-->
             </div>
         </div>
@@ -42,8 +43,7 @@
 
             <div class="col-sm-12 col-md-12">
                 <input type="text" required class="bg-focus form-control input-sm m-t-sm"
-                       ng-model="workPlaceId"  />
-                <!--ng-disabled="inRequest"-->
+                       ng-model="settingsObject.clientId.value"  />
             </div>
         </div>
 
@@ -52,8 +52,8 @@
 
             <div class="col-sm-12 col-md-12">
                 <input type="text" required class="form-control input-sm m-t-sm"
-                       ng-model="serverAddress" />
-                <!--ng-disabled="inRequest"-->
+                       on-enter="apply()"
+                       ng-model="settingsObject.wampServerUrl.value" />
             </div>
         </div>
     </form>
@@ -65,7 +65,7 @@
                 Отмена
             </button>
 
-            <button  class="os-btn green m-t-sm l-btn m-l-sm2" ng-click="apply()"  ng-disabled="!workPlaceId || !serverAddress">
+            <button  class="os-btn green m-t-sm l-btn m-l-sm2" ng-click="apply()"  ng-disabled="!settingsObject.clientId.value || !settingsObject.wampServerUrl.value">
                 Сохранить
             </button>
 

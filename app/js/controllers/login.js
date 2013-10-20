@@ -6,9 +6,6 @@ operatorShell.controller('LoginCtrl', function ($scope, $rootScope, $location, a
     'use strict';
 
     $scope.inRequest = false;
-/*
-    $scope.login = "2";
-    $scope.password = "1";*/
 
     var login = function (name, paswd) {
 
@@ -24,6 +21,11 @@ operatorShell.controller('LoginCtrl', function ($scope, $rootScope, $location, a
     };
 
     $scope.loginButtonClick = function () {
+
+        if (!$scope.login || !$scope.password || $scope.inRequest) {
+            return;
+        }
+
         $scope.inRequest = true;
         $scope.errorMessage = null;
         login($scope.login, $scope.password);

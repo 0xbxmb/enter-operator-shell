@@ -14,7 +14,7 @@ operatorShell.service('wamp', function ($q, $log, $rootScope, notifier, settings
 
             ab.connect(
                 // The WebSocket URI of the WAMP server
-                settings.settings.wampServerUrl,
+                settings.settings.wampServerUrl.value,
 
                 // The onconnect handler
                 function (session) {
@@ -31,7 +31,7 @@ operatorShell.service('wamp', function ($q, $log, $rootScope, notifier, settings
                     }
                     _session = session;
 
-                    _session.call(SEND_ID_URL, [ settings.settings.clientId, 0]).then(function (data) {
+                    _session.call(SEND_ID_URL, [ settings.settings.clientId.value, 0]).then(function (data) {
 
                         $rootScope.workplace = data;
                         notifier.connection.isConnected = true;

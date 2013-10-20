@@ -27,12 +27,11 @@ operatorShell.controller('SettingsCtrl', function ( $rootScope, $scope, $log, $l
         isConnected = false;
     });
 
-    /*
-    $scope.login = "admin";
-    $scope.password = "1";
-*/
     $scope.logon = function () {
 
+        if (!$scope.login || !$scope.password) {
+            return;
+        }
         $scope.loginErrorMessage = null;
 
         if ($scope.login ===  settings.login &&
@@ -40,8 +39,7 @@ operatorShell.controller('SettingsCtrl', function ( $rootScope, $scope, $log, $l
 
             $scope.isNotLogged = false;
 
-            $scope.workPlaceId = settings.settings.clientId;
-            $scope.serverAddress = settings.settings.wampServerUrl;
+            $scope.settingsObject = angular.copy(settings.settings);
 
         } else {
             $scope.loginErrorMessage = "Неверный пароль или пользователя";
@@ -49,10 +47,13 @@ operatorShell.controller('SettingsCtrl', function ( $rootScope, $scope, $log, $l
     };
 
     $scope.apply = function () {
-        settings.applyNewSettings({
-            workPlaceId : $scope.workPlaceId,
-            serverAddress: $scope.serverAddress
-        });
+
+        if (!$scope.settingsObject.clientId.value ||
+            !$scope.settingsObject.wampServerUrl.value) {
+            return;
+        }
+
+        settings.applyNewSettings($scope.settingsObject);
 
         $rootScope.$on('$routeChangeStart', function (data) {
             location.reload();

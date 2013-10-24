@@ -2,7 +2,7 @@
  * Created by i.sungurov on 08.10.13.
  */
 
-operatorShell.directive("osRedirectMenu", function (notifier) {
+operatorShell.directive("osRedirectMenu", function ($rootScope, notifier) {
 
     "use strict";
 
@@ -13,6 +13,7 @@ operatorShell.directive("osRedirectMenu", function (notifier) {
         restrict = 'E',
         scope = {
             items: "=",
+            selectedItem: "=",
             applyRedirectMethod: "&",
             cancelMethod: "&"
         },
@@ -54,6 +55,7 @@ operatorShell.directive("osRedirectMenu", function (notifier) {
             $scope.select = function ($event, item) {
 
                 if (item.ProductId !== undefined) {
+                    $scope.ticketName = $rootScope.ticketProduct.Ticket.FullNumber;
                     $scope.selectedService = item;
                 } else {
                     $scope.displayData = getDataForDisplay($scope.data, item.Id);
